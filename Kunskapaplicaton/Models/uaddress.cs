@@ -6,5 +6,6 @@ namespace Kunskapaplicaton.Models
         public int number { get; set; }
         public string street_address { get; set; }
         public int postalcode { get; set; }
+
     }
 }

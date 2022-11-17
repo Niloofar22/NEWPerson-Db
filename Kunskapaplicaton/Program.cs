@@ -9,16 +9,9 @@ namespace Kunskapaplicaton
     {
         static void Main(string[] args)
         {
-            using (PersonDbContext db = new PersonDbContext())
+            var Context = new PersonDbContext("Server = localhost; Database = PersonDb; Trusted_Connection = True");//be readonly rabt darad
+            
 
-            {
-                var Listusersinfor = db.usersinfors.ToListAsync();
-                Console.WriteLine("All usersinfor");
-                foreach(var item in Listusersinfor)
-                {
-
-                }
-            }
                 Console.WriteLine("please enter you Info");
             int id = Convert.ToInt32(Console.ReadLine());
             string fname = Console.ReadLine();
@@ -31,11 +24,10 @@ namespace Kunskapaplicaton
                 last_name = lname,
                 title = title,
             };
-            AddPerson addPer = new AddPerson();
+            AddPerson addPer = new AddPerson(Context);
             addPer.AddNewPerson(newPerson);
 
-            DbContext.IDeletePerson(usersinfor);
-            DbContext.Savechanges();
+          
 
             
         }
