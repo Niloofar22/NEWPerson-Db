@@ -9,7 +9,7 @@ namespace Kunskapaplicaton
     {
         static void Main(string[] args)
         {
-            var Context = new PersonDbContext("Server = localhost; Database = PersonDb; Trusted_Connection = True");//be readonly rabt darad
+            var Context = new PersonDbContext("Server = localhost; Database = PersonDb; user Id = sa; password = P@ssw0rd");//be readonly rabt darad
             
 
                 Console.WriteLine("please enter you Info");
@@ -19,17 +19,28 @@ namespace Kunskapaplicaton
             string title = Console.ReadLine();
             usersinfor newPerson = new usersinfor()
             {
-                id = 6,
+                id = id,
                 first_name = fname,
                 last_name = lname,
                 title = title,
             };
             AddPerson addPer = new AddPerson(Context);
             addPer.AddNewPerson(newPerson);
-
-          
-
+            //För DELETE
             
+
+            var dbContext = new PersonDbContext();
+
+                   Console.WriteLine("Enter an Id to Delete :");
+                    int Id = Convert.ToInt32(Console.ReadLine());
+
+            dbContext.usersinfors.Remove(dbContext.usersinfors.Find(id));
+
+                   dbContext.SaveChanges();
+                   Console.WriteLine("deleted!");
+
+
+
         }
     }
 }

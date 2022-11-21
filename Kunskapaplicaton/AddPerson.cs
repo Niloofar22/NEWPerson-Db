@@ -17,7 +17,7 @@ namespace Kunskapaplicaton
 
         public void AddNewPerson(usersinfor usersinfor)
         {
-            var query = "INSERT userinfor(id, first_name, last_name, title) values(@id, @first_name, @last_name, @title)";
+            var query = "INSERT usersinfor(id, first_name, last_name, title) values(@id, @first_name, @last_name, @title)";
             var parameter = new SqlParameter[]
             {
                 new SqlParameter("@id",usersinfor.id),
@@ -26,6 +26,7 @@ namespace Kunskapaplicaton
                 new SqlParameter("@title", usersinfor.title),
 
             };
+
             _personDbContext.Database.ExecuteSqlRaw(query, parameter);
 
         }
